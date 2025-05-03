@@ -3,7 +3,7 @@
 #include <AFMotor.h>          
 
 Servo myservo;
-
+ 
 int pos = 0;    
 boolean fire = false;
 
@@ -14,7 +14,7 @@ const String PHONE = "+8801704960672";
 SoftwareSerial sim800L(rxPin, txPin);
 #define Forward 6       
 #define GAS_SENSOR A0 
-#define pump 7
+#define pump 7  
 
 AF_DCMotor leftMotor1(1); 
 AF_DCMotor leftMotor2(2); 
@@ -23,7 +23,7 @@ AF_DCMotor rightMotor2(4);
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
   sim800L.begin(9600);
 
   sim800L.println("AT");
@@ -67,15 +67,10 @@ void loop()
   {
     delay(500);
     setMotorsSpeed(255, FORWARD);
-    delay(1000);
+    delay(2000);
     stopMotors();
     fire = true;
-    delay(5000);
     put_off_fire();
-    setMotorsSpeed(255, BACKWARD);
-    delay(100);
-    stopMotors();
-    make_call();
   }
   else if(digitalRead(Forward)==1){
     stopMotors();
@@ -94,7 +89,7 @@ void make_call()
 {
   Serial.println("calling....");
   sim800L.println("ATD" + PHONE + ";");
-  delay(20000); // 20 sec delay
+  delay(500); // 20 sec delay
   sim800L.println("ATH");
   delay(1000); // 1 sec delay
 }
