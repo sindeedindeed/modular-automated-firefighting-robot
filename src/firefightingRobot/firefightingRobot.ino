@@ -7,7 +7,7 @@ Servo myservo;
 int pos = 0;    
 boolean fire = false;
 
-const String PHONE = "+8801704960672"; 
+const String PHONE = "+XXXXXXXXXXXXXX"; 
 
 #define rxPin 2
 #define txPin 3 
